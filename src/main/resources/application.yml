@@ -1,0 +1,22 @@
+# https://tomcat.apache.org/tomcat-7.0-doc/config/http.html
+tomcat:
+  connector:
+    # reduce context switching
+    maxThreads: 250
+    # define connection timeout
+    connectionTimeout: 20000
+    # maximum: 16K connections test
+    maxConnections: 20000
+    # handle initial connection spike
+    acceptCount: 200
+    # avoid running out of ports due to connections stuck in TIME_WAIT state
+    maxKeepAliveRequests: 200
+    # Controls when the socket used by the connector is bound
+    bindOnInit: false
+    # The maximum size of the request and response HTTP header, specified in bytes
+    maxHttpHeaderSize: 8192
+    # The number of threads to be used to accept connections
+    acceptorThreadCount: 2
+    # The minimum number of threads always kept running
+    minSpareThreads: 50
+

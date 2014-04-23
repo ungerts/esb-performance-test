@@ -16,9 +16,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
-/**
- * Created by ungerts on 22.04.14.
- */
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
@@ -37,26 +34,26 @@ public class ESBPerformanceTest {
         return registrationBean;
     }
 
-    @Bean
-    public EmbeddedServletContainerFactory embeddedServletContainerFactory() {
-        TomcatEmbeddedServletContainerFactory fac = new TomcatEmbeddedServletContainerFactory();
-        fac.setPort(8080);
-        fac.addConnectorCustomizers(new TomcatConnectorCustomizer() {
-
-            @Override
-            public void customize(Connector connector) {
-                ProtocolHandler handler = connector.getProtocolHandler();
-                if (handler instanceof AbstractProtocol) {
-                    AbstractProtocol protocol = (AbstractProtocol) handler;
-                    protocol.setConnectionTimeout(20000);
-                    protocol.setMaxThreads(4);
-                    protocol.setMaxConnections(20000);
-                }
-                connector.setProperty("acceptCount", "20000");
-                connector.setProperty("maxKeepAliveRequests", "-1");
-            }
-        });
-        return fac;
-    }
+//    @Bean
+//    public EmbeddedServletContainerFactory embeddedServletContainerFactory() {
+//        TomcatEmbeddedServletContainerFactory fac = new TomcatEmbeddedServletContainerFactory();
+//        fac.setPort(8080);
+//        fac.addConnectorCustomizers(new TomcatConnectorCustomizer() {
+//
+//            @Override
+//            public void customize(Connector connector) {
+//                ProtocolHandler handler = connector.getProtocolHandler();
+//                if (handler instanceof AbstractProtocol) {
+//                    AbstractProtocol protocol = (AbstractProtocol) handler;
+//                    protocol.setConnectionTimeout(20000);
+//                    protocol.setMaxThreads(4);
+//                    protocol.setMaxConnections(20000);
+//                }
+//                connector.setProperty("acceptCount", "20000");
+//                connector.setProperty("maxKeepAliveRequests", "-1");
+//            }
+//        });
+//        return fac;
+//    }
 
 }
