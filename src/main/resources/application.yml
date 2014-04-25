@@ -33,7 +33,7 @@ camel:
     #
     endpointProtocol: http
     #
-    endpointHost: 54.198.198.129
+    endpointHost: localhost
     #
     endpointPort: 9000
     #
