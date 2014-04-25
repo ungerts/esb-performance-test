@@ -1,5 +1,6 @@
 # https://tomcat.apache.org/tomcat-7.0-doc/config/http.html
 tomcat:
+  #
   connector:
     # reduce context switching
     maxThreads: 250
@@ -19,4 +20,22 @@ tomcat:
     acceptorThreadCount: 2
     # The minimum number of threads always kept running
     minSpareThreads: 50
+# https://camel.apache.org/http4.html
+camel:
+  #
+  http4:
+    # The maximum number of total connections that the connection manager has.
+    maxTotalConnections: 1000
+    # The maximum number of connections per route.
+    connectionsPerRoute: 1000
+  # directProxy
+  echoService:
+    #
+    endpointProtocol: http
+    #
+    endpointHost: 54.198.198.129
+    #
+    endpointPort: 9000
+    #
+    endpointPath: /service/EchoService
 
