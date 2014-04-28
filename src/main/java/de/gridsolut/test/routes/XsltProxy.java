@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DirectProxy extends SpringRouteBuilder {
+public class XsltProxy extends SpringRouteBuilder {
 
     @Value("${camel.echoService.endpointProtocol}")
     private String endpointProtocol;
@@ -27,7 +27,10 @@ public class DirectProxy extends SpringRouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("servlet:///directProxy?matchOnUriPrefix=true")
-                .to(endpointProtocol + "4://" + endpointHost + ":" + endpointPort + endpointPath + "?bridgeEndpoint=true&throwExceptionOnFailure=false&maxTotalConnections=" + maxTotalConnections +"&connectionsPerRoute=" + connectionsPerRoute);
+        //TODO: allowStAX
+        from("servlet:///xsltProxy?matchOnUriPrefix=true")
+                .to("xslt:xslt/transfrom_reverse.xslt")
+                .to(endpointProtocol + "4://" + endpointHost + ":" + endpointPort + endpointPath + "?bridgeEndpoint=true&maxTotalConnections=" + maxTotalConnections + "&connectionsPerRoute=" + connectionsPerRoute)
+                .to("xslt:xslt/transform.xslt");
     }
 }
