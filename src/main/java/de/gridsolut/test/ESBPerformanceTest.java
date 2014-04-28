@@ -1,6 +1,5 @@
 package de.gridsolut.test;
 
-
 import org.apache.camel.component.servlet.CamelHttpTransportServlet;
 import org.apache.cxf.transport.servlet.CXFServlet;
 import org.slf4j.Logger;
